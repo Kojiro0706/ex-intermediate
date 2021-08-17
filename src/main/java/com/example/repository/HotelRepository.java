@@ -2,6 +2,7 @@ package com.example.repository;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -20,6 +21,7 @@ import com.example.domain.Hotel;
 @Repository
 public class HotelRepository {
 
+	@Autowired
 	private NamedParameterJdbcTemplate template;
 
 	private static final RowMapper<Hotel> HOTEL_ROW_MAPPER = new BeanPropertyRowMapper<>(Hotel.class);
@@ -30,7 +32,7 @@ public class HotelRepository {
 	 * @return ホテル情報
 	 */
 	public List<Hotel> findAll() {
-		String sql = "area_name, hotel_name, address, nearest_station, price, parking FROM hotels";
+		String sql = "SELECT id, area_name, hotel_name, address, nearest_station, price, parking FROM hotels";
 
 		List<Hotel> hotelList = template.query(sql, HOTEL_ROW_MAPPER);
 
@@ -43,7 +45,7 @@ public class HotelRepository {
 	 * @return ホテル情報
 	 */
 	public List<Hotel> searchBylessThanPrice(Integer price){
-		String sql = "area_name, hotel_name, address, nearest_station, price, parking " 
+		String sql = "SELECT id, area_name, hotel_name, address, nearest_station, price, parking " 
 	               + "FROM hotels WHERE price <= :price";
 		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("price",price);

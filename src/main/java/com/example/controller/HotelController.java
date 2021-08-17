@@ -24,31 +24,20 @@ public class HotelController {
 
 	@Autowired
 	private HotelService hotelService;
-
 	
-	/**
-	 * ホテル情報を全件取得する.
-	 * 
-	 * @param model リクエストスコープ
-	 * @return　ホテル情報
-	 */
-	@RequestMapping("/showList")
-	public String showList(Model model) {
-		List<Hotel> hotelList = hotelService.showList();
-
-		model.addAttribute("hotelList", hotelList);
-
+	@RequestMapping("")
+	public String index() {
 		return "search-hotel";
 	}
 
 	/**
-	 * 入力された値以下のホテル情報を取得する.
+	 * ホテル情報を取得する.
 	 * 
 	 * @param price PRICE
 	 * @param model リクエストスコープ
 	 * @return
 	 */
-	@RequestMapping("/searchBylessThanPrice")
+	@RequestMapping("/showList")
 	public String searchBylessThanPrice(Integer price, Model model) {
 
 		List<Hotel> hotelList = hotelService.searchBylessThanPrice(price);

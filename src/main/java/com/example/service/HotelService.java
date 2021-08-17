@@ -22,22 +22,16 @@ public class HotelService {
 	private HotelRepository hotelRepository;
 
 	/**
-	 * ホテル情報を全件取得する.
-	 * 
-	 * @return ホテル情報
-	 */
-	public List<Hotel> showList() {
-		return hotelRepository.findAll();
-	}
-
-	/**
 	 * 入力された値以下のホテル情報を取得する.
 	 * 
 	 * @param price PRICE
 	 * @return ホテル情報
 	 */
 	public List<Hotel> searchBylessThanPrice(Integer price) {
-
-		return hotelRepository.searchBylessThanPrice(price);
+		if (price == null) {
+			return hotelRepository.findAll();
+		} else {
+			return hotelRepository.searchBylessThanPrice(price);
+		}
 	}
 }

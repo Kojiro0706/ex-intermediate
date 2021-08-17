@@ -17,7 +17,7 @@ import com.example.service.TeamService;
  *
  */
 @Controller
-@RequestMapping("")
+@RequestMapping("/baseball")
 public class TeamController {
 
 	@Autowired

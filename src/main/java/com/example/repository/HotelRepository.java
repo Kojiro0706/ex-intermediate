@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.example.domain.Hotel;
 
 /**
- * ホテル情報を操作するリポジトリクラス.
+ * ホテル情報を操作するリポジトリ.
  * 
  * @author kojiro0706
  *

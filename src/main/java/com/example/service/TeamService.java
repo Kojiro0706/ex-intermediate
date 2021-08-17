@@ -31,7 +31,7 @@ public class TeamService {
 
 	/**
 	 * プロ野球チーム情報を一件取得するメソッド.
-	 * @param id
+	 * @param id ID
 	 * @return プロ野球チーム情報
 	 */
 	public Team showDetail(Integer id) {

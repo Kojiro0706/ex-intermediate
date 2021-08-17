@@ -12,6 +12,14 @@ import org.springframework.stereotype.Repository;
 
 import com.example.domain.Team;
 
+
+
+/**
+ * プロ野球チームの情報を操作するリポジトリクラス.
+ * 
+ * @author kojiro0706
+ *
+ */
 @Repository
 public class TeamRepository {
 
@@ -27,7 +35,7 @@ public class TeamRepository {
 	 * @return プロ野球チーム情報
 	 */
 	public List<Team> findAll() {
-		String sql = "SELECT id,league_name, team_name, headquarters, inauguration, history"
+		String sql = "SELECT id,league_name, team_name, headquarters, inauguration, history "
 				+ "FROM teams ORDER BY inauguration;";
 
 		List<Team> teamList = template.query(sql, TEAM_ROW_MAPPER);
@@ -38,11 +46,11 @@ public class TeamRepository {
 	/**
 	 * 主キー検索を行う.
 	 * 
-	 * @param id
+	 * @param id ID
 	 * @return プロ野球チーム情報
 	 */
 	public Team load(Integer id) {
-		String sql = "SELECT id,league_name, team_name, headquarters, inauguration, history"
+		String sql = "SELECT id,league_name, team_name, headquarters, inauguration, history "
 				+ "FROM teams WHERE id = :id";
 		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
